@@ -57,8 +57,15 @@ app.get("/entries", (req,res) =>{
   res.render("/entries");
 })
 
-app.get("/posts/:entry", (req, res) => {
-
+app.get("/posts/:entry", async (req, res) => {
+const paramName = req.params.entry;
+const doc = await Entry.findOne({_id: paramName});
+if(doc){
+  res.render("entries.ejs",{title: doc.title, content: doc.content});
+}else{
+  console.log(error)
+}
+res.redirect("/entries.ejs");
 
 });
 

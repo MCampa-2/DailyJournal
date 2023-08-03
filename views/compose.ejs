@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Journal</title>
+</head>
+<body>
+   <%- include("header") %>
+    <%-include("nav")-%>
+    <form class="form" action="/compose" method="post">
+        <label for="title" class="title">Title</label>
+        <input type="text" name="title" required>
+        <label for="post" class="post">Post</label>
+        <textarea cols="20" rows="10" name="post" required></textarea>
+        <button class="submit" type="submit">Submit</button>
+    </form>
+    <%- include("footer") -%>
+    <script src="main.js"></script>
+</body>
+</html>

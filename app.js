@@ -12,7 +12,7 @@ app.set("view engine", "ejs");
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/journal');
+  await mongoose.connect('mongodb+srv://Mike6453:FcrurqixLwctsM5a@cluster0.di7wtce.mongodb.net/journal');
   console.log("Databse connected");
 }
 
@@ -54,24 +54,27 @@ entry.save();
 });
 
 app.get("/entries", (req,res) =>{
-  res.render("/entries");
+  res.render("entries")
 })
 
+
 app.get("/posts/:entry", async (req, res) => {
-const paramName = req.params.entry;
-const doc = await Entry.findOne({_id: paramName});
-if(doc){
-  res.render("entries.ejs",{title: doc.title, content: doc.content});
-}else{
-  console.log(error)
-}
-res.redirect("/entries.ejs");
-
-});
-
-
+  const paramName = req.params.entry;
+  const doc = await Entry.findOne({_id: paramName});
+  if(doc){
+    res.render("entries.ejs",{title: doc.title, content: doc.content});
+  }else{
+    console.log(error)
+  }
+  
+  });
+  
 
 app.listen("3000", function(req,res){
     console.log("Server listening on port 3000");
 });
 
+
+
+//FcrurqixLwctsM5a
+//Mike6453
